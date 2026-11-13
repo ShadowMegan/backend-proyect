@@ -1,14 +1,10 @@
-const express = require("express"); //es la forma clasica de importar express module.
+const express = require("express");
 const swaggerUi = require("swagger-ui-express");
 const openapi = require("./docs/openapi.js");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-//ruta para la documentacion de la API
-app.use("/", swaggerUi.serve, swaggerUi.setup(openapi));
- 
-//req(request) re (response) res.json(respuesta en forma JSON)
-//arrow funcion
+// 1. Primero tus rutas de la API
 app.get("/api/saludo", (req, res) => {
   res.json({ mensaje: "Hola desde mi API" });
 });
@@ -19,15 +15,18 @@ app.get("/api/yo", (req, res) => {
 
 app.get("/api/edad/:anio", (req, res) => {
   const anioActual = new Date().getFullYear();
-  const año = parseInt(req.params.anio);
-  if (!Number.isInteger(año) || año < 1900 || año > anioActual) {
+  const anio = parseInt(req.params.anio);
+  if (!Number.isInteger(anio) || anio < 1900 || anio > anioActual) {
     return res.status(400).json({ error: "Año invalido" });
   }
-  const edad = anioActual - año;
+  const edad = anioActual - anio;
   res.json({
-    anioNacimiento: año,
+    anioNacimiento: anio,
     edad: edad
   });
 });
+
+// 2. Después la documentación de Swagger
+app.use("/", swaggerUi.serve, swaggerUi.setup(openapi));
 
 app.listen(PORT, () => console.log("API lista"));

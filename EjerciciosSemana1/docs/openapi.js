@@ -24,7 +24,7 @@ module.exports = {
     },
     "/api/yo": {
       get: {
-        tags: ["Usuario"],
+        tags: ["Ejercicio"],
         summary: "Devuelve tu nombre y carrera",
         responses: {
           200: {
@@ -43,7 +43,7 @@ module.exports = {
     },
     "/api/edad/{año}": {
       get: {
-        tags: ["Edad"],
+        tags: ["Ejercicio"],
         summary: "Calcula la edad a partir del año de nacimiento",
         parameters: [
           {
