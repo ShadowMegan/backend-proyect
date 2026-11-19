@@ -1,11 +1,9 @@
-const{PrismaClient} = require('../../generated/prisma');
-const{PrismaNeon} = require('@prisma/adapter/Neon');
+const { PrismaClient } = require("../generated/prisma");
+const { PrismaNeon } = require("@prisma/adapter-neon");
 
 const adapter = new PrismaNeon({
-    URL: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL,
 });
-const prisma = new PrismaClient({
-    adapter,
-});
+const prisma = new PrismaClient({ adapter });
 
 module.exports = prisma;
