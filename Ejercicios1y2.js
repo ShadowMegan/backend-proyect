@@ -1,6 +1,6 @@
 const express = require("express");
 const swaggerUi = require("swagger-ui-express");
-const openapi = require("./docs/openapi.js");
+const openapi = require("./EjerciciosSemana1/docs/openapi.js");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
