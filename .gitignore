@@ -1,7 +1,12 @@
 ﻿node_modules/
+generated/
 
-#
-*.log
+# Variables de entorno
 .env
+.env.*
+*.log
+
+# Permitir archivos de egemplo
+!.env.example
 
 /src/generated/prisma
